@@ -16,7 +16,6 @@ Hints:
 ### NO CHANGES NEEDED BELOW ###
 
 import random
-from time import sleep
 from datetime import datetime
 
 from qgis.core import (
@@ -129,14 +128,14 @@ class redistributePoints(QgsTask):
         else:
             if self.exception is None:
                 QgsMessageLog.logMessage(
-                    'RandomTask "{name}" not successful but without '\
+                    'Task "{name}" not successful but without '\
                     'exception (probably the task was manually '\
                     'canceled by the user)'.format(
                         name=self.description()),
                     MESSAGE_CATEGORY, Qgis.Warning)
             else:
                 QgsMessageLog.logMessage(
-                    'RandomTask "{name}" Exception: {exception}'.format(
+                    'Task "{name}" Exception: {exception}'.format(
                         name=self.description(),
                         exception=self.exception),
                     MESSAGE_CATEGORY, Qgis.Critical)
@@ -144,7 +143,7 @@ class redistributePoints(QgsTask):
 
     def cancel(self):
         QgsMessageLog.logMessage(
-            'RandomTask "{name}" was canceled'.format(
+            'Task "{name}" was canceled'.format(
                 name=self.description()),
             MESSAGE_CATEGORY, Qgis.Info)
         super().cancel()
