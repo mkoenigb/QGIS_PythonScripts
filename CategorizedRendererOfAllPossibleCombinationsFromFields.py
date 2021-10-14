@@ -25,13 +25,14 @@ for feat in layer.getFeatures():
 for k, v in fieldsValuesDict.items():
     fieldsValuesDict[k] = list(dict.fromkeys(v))
 
-print(fieldsValuesDict)
+#print(fieldsValuesDict)
 # create a list of all possible combinations of all value-lists of all keys in the dictionary
 allNames = sorted(fieldsValuesDict)
 combinations = it.product(*(fieldsValuesDict[Name] for Name in allNames))
 for item in list(combinations):
     possibleCombinations.append(''.join(item))
 
+possibleCombinations.sort()
 #print(possibleCombinations)
 
 ### This is the part to setup the categorized renderer to all possible combinations
