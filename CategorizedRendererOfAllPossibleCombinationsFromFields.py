@@ -2,8 +2,8 @@
 import itertools as it
 from random import randrange
 
-layer = iface.activeLayer()
-fields = ['crono1','crono2','crono3']
+layer = iface.activeLayer() # the layer you want to work with
+fields = ['crono1','crono2','crono3'] # the fieldnames you want to consider
 
 ### This is the part to generate a list of all possible combinations
 fieldsValuesDict = {}
@@ -16,7 +16,8 @@ for field in fields:
 # fill the dictionary with lists of all values in the layer
 for feat in layer.getFeatures():
     for field in fields:
-        fieldsValuesDict[field].append(feat[field])
+        if feat[field] not in (None,NULL):
+            fieldsValuesDict[field].append(feat[field])
 
 # remove duplicate values from the dictionaries values-list
 for k, v in fieldsValuesDict.items():
